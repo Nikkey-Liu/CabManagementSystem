@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.dao.CompanyBankAccountMapper">
+  <resultMap id="BaseResultMap" type="CompanyBankAccount">
+   
+    <id column="accountId" jdbcType="INTEGER" property="accountid" />
+    <result column="accountOwnerName" jdbcType="VARCHAR" property="accountownername" />
+    <result column="accountNumber" jdbcType="VARCHAR" property="accountnumber" />
+    <result column="accountBalance" jdbcType="DOUBLE" property="accountbalance" />
+  </resultMap>
+  <sql id="Base_Column_List">
+   
+    accountId, accountOwnerName, accountNumber, accountBalance
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+   
+    select 
+    <include refid="Base_Column_List" />
+    from companyBankAccount
+    where accountId = #{accountid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+   
+    delete from companyBankAccount
+    where accountId = #{accountid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="CompanyBankAccount">
+   
+    insert into companyBankAccount (accountId, accountOwnerName, accountNumber, 
+      accountBalance)
+    values (#{accountid,jdbcType=INTEGER}, #{accountownername,jdbcType=VARCHAR}, #{accountnumber,jdbcType=VARCHAR}, 
+      #{accountbalance,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="CompanyBankAccount">
+   
+    insert into companyBankAccount
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="accountid != null">
+        accountId,
+      </if>
+      <if test="accountownername != null">
+        accountOwnerName,
+      </if>
+      <if test="accountnumber != null">
+        accountNumber,
+      </if>
+      <if test="accountbalance != null">
+        accountBalance,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="accountid != null">
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="accountownername != null">
+        #{accountownername,jdbcType=VARCHAR},
+      </if>
+      <if test="accountnumber != null">
+        #{accountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="accountbalance != null">
+        #{accountbalance,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="CompanyBankAccount">
+   
+    update companyBankAccount
+    <set>
+      <if test="accountownername != null">
+        accountOwnerName = #{accountownername,jdbcType=VARCHAR},
+      </if>
+      <if test="accountnumber != null">
+        accountNumber = #{accountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="accountbalance != null">
+        accountBalance = #{accountbalance,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where accountId = #{accountid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="CompanyBankAccount">
+   
+    update companyBankAccount
+    set accountOwnerName = #{accountownername,jdbcType=VARCHAR},
+      accountNumber = #{accountnumber,jdbcType=VARCHAR},
+      accountBalance = #{accountbalance,jdbcType=DOUBLE}
+    where accountId = #{accountid,jdbcType=INTEGER}
+  </update>
+  <select id="selectCompanyBankAccountList" parameterType="CompanyBankAccount" 
+                                           resultType="CompanyBankAccount">
+                                            
+		SELECT * FROM companyBankAccount 
+		
+		
+		<!-- 执行分页查询 -->
+		</select>
+</mapper>

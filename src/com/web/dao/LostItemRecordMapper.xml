@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.dao.LostItemRecordMapper">
+  <resultMap id="BaseResultMap" type="LostItemRecord">
+   
+    <id column="itemId" jdbcType="INTEGER" property="itemid" />
+    <result column="itemName" jdbcType="VARCHAR" property="itemname" />
+    <result column="vehicleId" jdbcType="INTEGER" property="vehicleid" />
+    <result column="itemDescription" jdbcType="VARCHAR" property="itemdescription" />
+    <result column="tripOrigin" jdbcType="VARCHAR" property="triporigin" />
+    <result column="tripDestination" jdbcType="VARCHAR" property="tripdestination" />
+    <result column="recordDate" jdbcType="DATE" property="recorddate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+   
+    itemId, itemName, vehicleId, itemDescription, tripOrigin, tripDestination, recordDate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+   
+    select 
+    <include refid="Base_Column_List" />
+    from lostItemRecord
+    where itemId = #{itemid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+   
+    delete from lostItemRecord
+    where itemId = #{itemid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="LostItemRecord">
+   
+    insert into lostItemRecord (itemId, itemName, vehicleId, 
+      itemDescription, tripOrigin, tripDestination, 
+      recordDate)
+    values (#{itemid,jdbcType=INTEGER}, #{itemname,jdbcType=VARCHAR}, #{vehicleid,jdbcType=INTEGER}, 
+      #{itemdescription,jdbcType=VARCHAR}, #{triporigin,jdbcType=VARCHAR}, #{tripdestination,jdbcType=VARCHAR}, 
+      #{recorddate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="LostItemRecord">
+   
+    insert into lostItemRecord
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemid != null">
+        itemId,
+      </if>
+      <if test="itemname != null">
+        itemName,
+      </if>
+      <if test="vehicleid != null">
+        vehicleId,
+      </if>
+      <if test="itemdescription != null">
+        itemDescription,
+      </if>
+      <if test="triporigin != null">
+        tripOrigin,
+      </if>
+      <if test="tripdestination != null">
+        tripDestination,
+      </if>
+      <if test="recorddate != null">
+        recordDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemid != null">
+        #{itemid,jdbcType=INTEGER},
+      </if>
+      <if test="itemname != null">
+        #{itemname,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleid != null">
+        #{vehicleid,jdbcType=INTEGER},
+      </if>
+      <if test="itemdescription != null">
+        #{itemdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="triporigin != null">
+        #{triporigin,jdbcType=VARCHAR},
+      </if>
+      <if test="tripdestination != null">
+        #{tripdestination,jdbcType=VARCHAR},
+      </if>
+      <if test="recorddate != null">
+        #{recorddate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="LostItemRecord">
+   
+    update lostItemRecord
+    <set>
+      <if test="itemname != null">
+        itemName = #{itemname,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleid != null">
+        vehicleId = #{vehicleid,jdbcType=INTEGER},
+      </if>
+      <if test="itemdescription != null">
+        itemDescription = #{itemdescription,jdbcType=VARCHAR},
+      </if>
+      <if test="triporigin != null">
+        tripOrigin = #{triporigin,jdbcType=VARCHAR},
+      </if>
+      <if test="tripdestination != null">
+        tripDestination = #{tripdestination,jdbcType=VARCHAR},
+      </if>
+      <if test="recorddate != null">
+        recordDate = #{recorddate,jdbcType=DATE},
+      </if>
+    </set>
+    where itemId = #{itemid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="LostItemRecord">
+   
+    update lostItemRecord
+    set itemName = #{itemname,jdbcType=VARCHAR},
+      vehicleId = #{vehicleid,jdbcType=INTEGER},
+      itemDescription = #{itemdescription,jdbcType=VARCHAR},
+      tripOrigin = #{triporigin,jdbcType=VARCHAR},
+      tripDestination = #{tripdestination,jdbcType=VARCHAR},
+      recordDate = #{recorddate,jdbcType=DATE}
+    where itemId = #{itemid,jdbcType=INTEGER}
+  </update>
+   <select id="selectLostItemRecordList" parameterType="LostItemRecord" 
+                                           resultType="LostItemRecord">
+                                            
+		SELECT * FROM lostItemRecord 
+		
+		
+		<!-- 执行分页查询 -->
+		</select>
+</mapper>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.dao.TripSuggestionMapper">
+  <resultMap id="BaseResultMap" type="TripSuggestion">
+   
+    <id column="tripSuggestId" jdbcType="INTEGER" property="tripsuggestid" />
+    <result column="origin" jdbcType="VARCHAR" property="origin" />
+    <result column="destination" jdbcType="VARCHAR" property="destination" />
+    <result column="driverId" jdbcType="INTEGER" property="driverid" />
+    <result column="distance" jdbcType="DOUBLE" property="distance" />
+    <result column="startTime" jdbcType="TIMESTAMP" property="starttime" />
+    <result column="endTime" jdbcType="TIMESTAMP" property="endtime" />
+    <result column="tripState" jdbcType="VARCHAR" property="tripstate" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="capacity" jdbcType="INTEGER" property="capacity" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+  </resultMap>
+  <sql id="Base_Column_List">
+   
+    tripSuggestId, origin, destination, driverId, distance, startTime, endTime, tripState, 
+    price, capacity, state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+   
+    select 
+    <include refid="Base_Column_List" />
+    from tripSuggestion
+    where tripSuggestId = #{tripsuggestid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+   
+    delete from tripSuggestion
+    where tripSuggestId = #{tripsuggestid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="TripSuggestion">
+   
+    insert into tripSuggestion (tripSuggestId, origin, destination, 
+      driverId, distance, startTime, 
+      endTime, tripState, price, 
+      capacity, state)
+    values (#{tripsuggestid,jdbcType=INTEGER}, #{origin,jdbcType=VARCHAR}, #{destination,jdbcType=VARCHAR}, 
+      #{driverid,jdbcType=INTEGER}, #{distance,jdbcType=DOUBLE}, #{starttime,jdbcType=TIMESTAMP}, 
+      #{endtime,jdbcType=TIMESTAMP}, #{tripstate,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, 
+      #{capacity,jdbcType=INTEGER}, #{state,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="TripSuggestion">
+   
+    insert into tripSuggestion
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tripsuggestid != null">
+        tripSuggestId,
+      </if>
+      <if test="origin != null">
+        origin,
+      </if>
+      <if test="destination != null">
+        destination,
+      </if>
+      <if test="driverid != null">
+        driverId,
+      </if>
+      <if test="distance != null">
+        distance,
+      </if>
+      <if test="starttime != null">
+        startTime,
+      </if>
+      <if test="endtime != null">
+        endTime,
+      </if>
+      <if test="tripstate != null">
+        tripState,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="capacity != null">
+        capacity,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tripsuggestid != null">
+        #{tripsuggestid,jdbcType=INTEGER},
+      </if>
+      <if test="origin != null">
+        #{origin,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null">
+        #{destination,jdbcType=VARCHAR},
+      </if>
+      <if test="driverid != null">
+        #{driverid,jdbcType=INTEGER},
+      </if>
+      <if test="distance != null">
+        #{distance,jdbcType=DOUBLE},
+      </if>
+      <if test="starttime != null">
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tripstate != null">
+        #{tripstate,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="capacity != null">
+        #{capacity,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="TripSuggestion">
+   
+    update tripSuggestion
+    <set>
+      <if test="origin != null">
+        origin = #{origin,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null">
+        destination = #{destination,jdbcType=VARCHAR},
+      </if>
+      <if test="driverid != null">
+        driverId = #{driverid,jdbcType=INTEGER},
+      </if>
+      <if test="distance != null">
+        distance = #{distance,jdbcType=DOUBLE},
+      </if>
+      <if test="starttime != null">
+        startTime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        endTime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tripstate != null">
+        tripState = #{tripstate,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="capacity != null">
+        capacity = #{capacity,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tripSuggestId = #{tripsuggestid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="TripSuggestion">
+   
+    update tripSuggestion
+    set origin = #{origin,jdbcType=VARCHAR},
+      destination = #{destination,jdbcType=VARCHAR},
+      driverId = #{driverid,jdbcType=INTEGER},
+      distance = #{distance,jdbcType=DOUBLE},
+      startTime = #{starttime,jdbcType=TIMESTAMP},
+      endTime = #{endtime,jdbcType=TIMESTAMP},
+      tripState = #{tripstate,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DOUBLE},
+      capacity = #{capacity,jdbcType=INTEGER},
+      state = #{state,jdbcType=VARCHAR}
+    where tripSuggestId = #{tripsuggestid,jdbcType=INTEGER}
+  </update>
+    <select id="selectTripSuggestionList" parameterType="TripSuggestion" 
+                                           resultType="TripSuggestion">
+                                            
+		SELECT * FROM tripSuggestion 
+		
+		
+		<!-- 执行分页查询 -->
+		</select>
+</mapper>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.dao.DriverMapper">
+  <resultMap id="BaseResultMap" type="Driver">
+   
+    <id column="driverId" jdbcType="INTEGER" property="driverid" />
+    <result column="driverName" jdbcType="VARCHAR" property="drivername" />
+    <result column="dob" jdbcType="DATE" property="dob" />
+    <result column="driverState" jdbcType="BIT" property="driverstate" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="loginAttempts" jdbcType="INTEGER" property="loginattempts" />
+    <result column="locked" jdbcType="BIT" property="locked" />
+    <result column="activated" jdbcType="BIT" property="activated" />
+    <result column="lastLogin" jdbcType="TIMESTAMP" property="lastlogin" />
+    <result column="subscribed" jdbcType="BIT" property="subscribed" />
+    <result column="phoneNumber" jdbcType="VARCHAR" property="phonenumber" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="driverPassword" jdbcType="VARCHAR" property="driverpassword" />
+  </resultMap>
+  <select id="selectDriverListCount" parameterType="Driver" 
+                                                 resultType="Integer">
+		select count(*) from driver
+		
+	</select>	
+	
+  <sql id="Base_Column_List">
+   
+    driverId, driverName, dob, driverState, email, loginAttempts, locked, activated, 
+    lastLogin, subscribed, phoneNumber, address, driverPassword
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultType="Driver">
+   
+    select 
+*
+    from driver
+    where driverId = #{driverid}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+   
+    delete from driver
+    where driverId = #{driverid}
+  </delete>
+  <insert id="insert" parameterType="Driver">
+   
+    insert into driver ( driverName, dob, 
+      driverState, email, loginAttempts, 
+      locked, activated, lastLogin, 
+      subscribed, phoneNumber, address, 
+      driverPassword)
+    values ( #{drivername,jdbcType=VARCHAR}, #{dob,jdbcType=DATE}, 
+      #{driverstate,jdbcType=BIT}, #{email,jdbcType=VARCHAR}, #{loginattempts,jdbcType=INTEGER}, 
+      #{locked,jdbcType=BIT}, #{activated,jdbcType=BIT}, #{lastlogin,jdbcType=TIMESTAMP}, 
+      #{subscribed,jdbcType=BIT}, #{phonenumber,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{driverpassword,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="Driver">
+   
+    insert into driver
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="driverid != null">
+        driverId,
+      </if>
+      <if test="drivername != null">
+        driverName,
+      </if>
+      <if test="dob != null">
+        dob,
+      </if>
+      <if test="driverstate != null">
+        driverState,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="loginattempts != null">
+        loginAttempts,
+      </if>
+      <if test="locked != null">
+        locked,
+      </if>
+      <if test="activated != null">
+        activated,
+      </if>
+      <if test="lastlogin != null">
+        lastLogin,
+      </if>
+      <if test="subscribed != null">
+        subscribed,
+      </if>
+      <if test="phonenumber != null">
+        phoneNumber,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="driverpassword != null">
+        driverPassword,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="driverid != null">
+        #{driverid,jdbcType=INTEGER},
+      </if>
+      <if test="drivername != null">
+        #{drivername,jdbcType=VARCHAR},
+      </if>
+      <if test="dob != null">
+        #{dob,jdbcType=DATE},
+      </if>
+      <if test="driverstate != null">
+        #{driverstate,jdbcType=BIT},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="loginattempts != null">
+        #{loginattempts,jdbcType=INTEGER},
+      </if>
+      <if test="locked != null">
+        #{locked,jdbcType=BIT},
+      </if>
+      <if test="activated != null">
+        #{activated,jdbcType=BIT},
+      </if>
+      <if test="lastlogin != null">
+        #{lastlogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="subscribed != null">
+        #{subscribed,jdbcType=BIT},
+      </if>
+      <if test="phonenumber != null">
+        #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="driverpassword != null">
+        #{driverpassword,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="Driver">
+   
+    update driver
+    <set>
+      <if test="drivername != null">
+        driverName = #{drivername,jdbcType=VARCHAR},
+      </if>
+      <if test="dob != null">
+        dob = #{dob,jdbcType=DATE},
+      </if>
+      <if test="driverstate != null">
+        driverState = #{driverstate,jdbcType=BIT},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="loginattempts != null">
+        loginAttempts = #{loginattempts,jdbcType=INTEGER},
+      </if>
+      <if test="locked != null">
+        locked = #{locked,jdbcType=BIT},
+      </if>
+      <if test="activated != null">
+        activated = #{activated,jdbcType=BIT},
+      </if>
+      <if test="lastlogin != null">
+        lastLogin = #{lastlogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="subscribed != null">
+        subscribed = #{subscribed,jdbcType=BIT},
+      </if>
+      <if test="phonenumber != null">
+        phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="driverpassword != null">
+        driverPassword = #{driverpassword,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where driverId = #{driverid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="Driver">
+   
+    update driver
+    set driverName = #{drivername,jdbcType=VARCHAR},
+      dob = #{dob,jdbcType=DATE},
+      driverState = #{driverstate,jdbcType=BIT},
+      email = #{email,jdbcType=VARCHAR},
+      loginAttempts = #{loginattempts,jdbcType=INTEGER},
+      locked = #{locked,jdbcType=BIT},
+      activated = #{activated,jdbcType=BIT},
+      lastLogin = #{lastlogin,jdbcType=TIMESTAMP},
+      subscribed = #{subscribed,jdbcType=BIT},
+      phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      driverPassword = #{driverpassword,jdbcType=VARCHAR}
+    where driverId = #{driverid,jdbcType=INTEGER}
+  </update>
+   <select id="selectDriverList" parameterType="Driver" 
+                                           resultType="Driver">
+                                            
+		SELECT * FROM driver 
+		
+		
+		<!-- 执行分页查询 -->
+		</select>
+</mapper>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.dao.PassengerPaymentRecordMapper">
+  <resultMap id="BaseResultMap" type="PassengerPaymentRecord">
+   
+    <id column="PaymentRecordId" jdbcType="INTEGER" property="paymentrecordid" />
+    <result column="amount" jdbcType="DOUBLE" property="amount" />
+    <result column="PaymentStatus" jdbcType="VARCHAR" property="paymentstatus" />
+    <result column="paymentDate" jdbcType="DATE" property="paymentdate" />
+    <result column="paymentType" jdbcType="INTEGER" property="paymenttype" />
+    <result column="thirtyPartyPaymentId" jdbcType="INTEGER" property="thirtypartypaymentid" />
+    <result column="tripId" jdbcType="INTEGER" property="tripid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+   
+    PaymentRecordId, amount, PaymentStatus, paymentDate, paymentType, thirtyPartyPaymentId, 
+    tripId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+   
+    select 
+    <include refid="Base_Column_List" />
+    from passengerPaymentRecord
+    where PaymentRecordId = #{paymentrecordid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+   
+    delete from passengerPaymentRecord
+    where PaymentRecordId = #{paymentrecordid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="PassengerPaymentRecord">
+   
+    insert into passengerPaymentRecord (PaymentRecordId, amount, PaymentStatus, 
+      paymentDate, paymentType, thirtyPartyPaymentId, 
+      tripId)
+    values (#{paymentrecordid,jdbcType=INTEGER}, #{amount,jdbcType=DOUBLE}, #{paymentstatus,jdbcType=VARCHAR}, 
+      #{paymentdate,jdbcType=DATE}, #{paymenttype,jdbcType=INTEGER}, #{thirtypartypaymentid,jdbcType=INTEGER}, 
+      #{tripid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="PassengerPaymentRecord">
+   
+    insert into passengerPaymentRecord
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="paymentrecordid != null">
+        PaymentRecordId,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="paymentstatus != null">
+        PaymentStatus,
+      </if>
+      <if test="paymentdate != null">
+        paymentDate,
+      </if>
+      <if test="paymenttype != null">
+        paymentType,
+      </if>
+      <if test="thirtypartypaymentid != null">
+        thirtyPartyPaymentId,
+      </if>
+      <if test="tripid != null">
+        tripId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="paymentrecordid != null">
+        #{paymentrecordid,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="paymentstatus != null">
+        #{paymentstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentdate != null">
+        #{paymentdate,jdbcType=DATE},
+      </if>
+      <if test="paymenttype != null">
+        #{paymenttype,jdbcType=INTEGER},
+      </if>
+      <if test="thirtypartypaymentid != null">
+        #{thirtypartypaymentid,jdbcType=INTEGER},
+      </if>
+      <if test="tripid != null">
+        #{tripid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="PassengerPaymentRecord">
+   
+    update passengerPaymentRecord
+    <set>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="paymentstatus != null">
+        PaymentStatus = #{paymentstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentdate != null">
+        paymentDate = #{paymentdate,jdbcType=DATE},
+      </if>
+      <if test="paymenttype != null">
+        paymentType = #{paymenttype,jdbcType=INTEGER},
+      </if>
+      <if test="thirtypartypaymentid != null">
+        thirtyPartyPaymentId = #{thirtypartypaymentid,jdbcType=INTEGER},
+      </if>
+      <if test="tripid != null">
+        tripId = #{tripid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where PaymentRecordId = #{paymentrecordid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="PassengerPaymentRecord">
+   
+    update passengerPaymentRecord
+    set amount = #{amount,jdbcType=DOUBLE},
+      PaymentStatus = #{paymentstatus,jdbcType=VARCHAR},
+      paymentDate = #{paymentdate,jdbcType=DATE},
+      paymentType = #{paymenttype,jdbcType=INTEGER},
+      thirtyPartyPaymentId = #{thirtypartypaymentid,jdbcType=INTEGER},
+      tripId = #{tripid,jdbcType=INTEGER}
+    where PaymentRecordId = #{paymentrecordid,jdbcType=INTEGER}
+  </update>
+      <select id="selectPassengerPaymentRecordList" parameterType="PassengerPaymentRecord" 
+                                           resultType="PassengerPaymentRecord">
+                                            
+		SELECT * FROM passengerPaymentRecord 
+		
+		
+		<!-- 执行分页查询 -->
+		</select>
+</mapper>

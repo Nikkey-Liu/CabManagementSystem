@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.dao.TripMapper">
+  <resultMap id="BaseResultMap" type="Trip">
+   
+    <id column="tripId" jdbcType="INTEGER" property="tripid" />
+    <result column="tripdate" jdbcType="DATE" property="tripdate" />
+    <result column="driverId" jdbcType="INTEGER" property="driverid" />
+    <result column="vehicleId" jdbcType="INTEGER" property="vehicleid" />
+    <result column="reviewId" jdbcType="INTEGER" property="reviewid" />
+    <result column="tripstate" jdbcType="VARCHAR" property="tripstate" />
+    <result column="origin" jdbcType="VARCHAR" property="origin" />
+    <result column="destination" jdbcType="VARCHAR" property="destination" />
+    <result column="passengerId" jdbcType="INTEGER" property="passengerid" />
+    <result column="distance" jdbcType="DOUBLE" property="distance" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="startTime" jdbcType="TIMESTAMP" property="starttime" />
+    <result column="endTime" jdbcType="TIMESTAMP" property="endtime" />
+    <result column="peopleCount" jdbcType="INTEGER" property="peoplecount" />
+    <result column="specialService" jdbcType="VARCHAR" property="specialservice" />
+    <result column="originCoordinate" jdbcType="VARCHAR" property="origincoordinate" />
+    <result column="destinationCoordinate" jdbcType="VARCHAR" property="destinationcoordinate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+   
+    tripId, tripdate, driverId, vehicleId, reviewId, tripstate, origin, destination, 
+    passengerId, distance, price, startTime, endTime, peopleCount, specialService, originCoordinate, 
+    destinationCoordinate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+   
+    select 
+    <include refid="Base_Column_List" />
+    from trip
+    where tripId = #{tripid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+   
+    delete from trip
+    where tripId = #{tripid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="Trip">
+   
+    insert into trip (tripId, tripdate, driverId, 
+      vehicleId, reviewId, tripstate, 
+      origin, destination, passengerId, 
+      distance, price, startTime, 
+      endTime, peopleCount, specialService, 
+      originCoordinate, destinationCoordinate
+      )
+    values (#{tripid,jdbcType=INTEGER}, #{tripdate,jdbcType=DATE}, #{driverid,jdbcType=INTEGER}, 
+      #{vehicleid,jdbcType=INTEGER}, #{reviewid,jdbcType=INTEGER}, #{tripstate,jdbcType=VARCHAR}, 
+      #{origin,jdbcType=VARCHAR}, #{destination,jdbcType=VARCHAR}, #{passengerid,jdbcType=INTEGER}, 
+      #{distance,jdbcType=DOUBLE}, #{price,jdbcType=DOUBLE}, #{starttime,jdbcType=TIMESTAMP}, 
+      #{endtime,jdbcType=TIMESTAMP}, #{peoplecount,jdbcType=INTEGER}, #{specialservice,jdbcType=VARCHAR}, 
+      #{origincoordinate,jdbcType=VARCHAR}, #{destinationcoordinate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="Trip">
+   
+    insert into trip
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tripid != null">
+        tripId,
+      </if>
+      <if test="tripdate != null">
+        tripdate,
+      </if>
+      <if test="driverid != null">
+        driverId,
+      </if>
+      <if test="vehicleid != null">
+        vehicleId,
+      </if>
+      <if test="reviewid != null">
+        reviewId,
+      </if>
+      <if test="tripstate != null">
+        tripstate,
+      </if>
+      <if test="origin != null">
+        origin,
+      </if>
+      <if test="destination != null">
+        destination,
+      </if>
+      <if test="passengerid != null">
+        passengerId,
+      </if>
+      <if test="distance != null">
+        distance,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="starttime != null">
+        startTime,
+      </if>
+      <if test="endtime != null">
+        endTime,
+      </if>
+      <if test="peoplecount != null">
+        peopleCount,
+      </if>
+      <if test="specialservice != null">
+        specialService,
+      </if>
+      <if test="origincoordinate != null">
+        originCoordinate,
+      </if>
+      <if test="destinationcoordinate != null">
+        destinationCoordinate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tripid != null">
+        #{tripid,jdbcType=INTEGER},
+      </if>
+      <if test="tripdate != null">
+        #{tripdate,jdbcType=DATE},
+      </if>
+      <if test="driverid != null">
+        #{driverid,jdbcType=INTEGER},
+      </if>
+      <if test="vehicleid != null">
+        #{vehicleid,jdbcType=INTEGER},
+      </if>
+      <if test="reviewid != null">
+        #{reviewid,jdbcType=INTEGER},
+      </if>
+      <if test="tripstate != null">
+        #{tripstate,jdbcType=VARCHAR},
+      </if>
+      <if test="origin != null">
+        #{origin,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null">
+        #{destination,jdbcType=VARCHAR},
+      </if>
+      <if test="passengerid != null">
+        #{passengerid,jdbcType=INTEGER},
+      </if>
+      <if test="distance != null">
+        #{distance,jdbcType=DOUBLE},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="starttime != null">
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="peoplecount != null">
+        #{peoplecount,jdbcType=INTEGER},
+      </if>
+      <if test="specialservice != null">
+        #{specialservice,jdbcType=VARCHAR},
+      </if>
+      <if test="origincoordinate != null">
+        #{origincoordinate,jdbcType=VARCHAR},
+      </if>
+      <if test="destinationcoordinate != null">
+        #{destinationcoordinate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="Trip">
+   
+    update trip
+    <set>
+      <if test="tripdate != null">
+        tripdate = #{tripdate,jdbcType=DATE},
+      </if>
+      <if test="driverid != null">
+        driverId = #{driverid,jdbcType=INTEGER},
+      </if>
+      <if test="vehicleid != null">
+        vehicleId = #{vehicleid,jdbcType=INTEGER},
+      </if>
+      <if test="reviewid != null">
+        reviewId = #{reviewid,jdbcType=INTEGER},
+      </if>
+      <if test="tripstate != null">
+        tripstate = #{tripstate,jdbcType=VARCHAR},
+      </if>
+      <if test="origin != null">
+        origin = #{origin,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null">
+        destination = #{destination,jdbcType=VARCHAR},
+      </if>
+      <if test="passengerid != null">
+        passengerId = #{passengerid,jdbcType=INTEGER},
+      </if>
+      <if test="distance != null">
+        distance = #{distance,jdbcType=DOUBLE},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="starttime != null">
+        startTime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        endTime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="peoplecount != null">
+        peopleCount = #{peoplecount,jdbcType=INTEGER},
+      </if>
+      <if test="specialservice != null">
+        specialService = #{specialservice,jdbcType=VARCHAR},
+      </if>
+      <if test="origincoordinate != null">
+        originCoordinate = #{origincoordinate,jdbcType=VARCHAR},
+      </if>
+      <if test="destinationcoordinate != null">
+        destinationCoordinate = #{destinationcoordinate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tripId = #{tripid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="Trip">
+   
+    update trip
+    set tripdate = #{tripdate,jdbcType=DATE},
+      driverId = #{driverid,jdbcType=INTEGER},
+      vehicleId = #{vehicleid,jdbcType=INTEGER},
+      reviewId = #{reviewid,jdbcType=INTEGER},
+      tripstate = #{tripstate,jdbcType=VARCHAR},
+      origin = #{origin,jdbcType=VARCHAR},
+      destination = #{destination,jdbcType=VARCHAR},
+      passengerId = #{passengerid,jdbcType=INTEGER},
+      distance = #{distance,jdbcType=DOUBLE},
+      price = #{price,jdbcType=DOUBLE},
+      startTime = #{starttime,jdbcType=TIMESTAMP},
+      endTime = #{endtime,jdbcType=TIMESTAMP},
+      peopleCount = #{peoplecount,jdbcType=INTEGER},
+      specialService = #{specialservice,jdbcType=VARCHAR},
+      originCoordinate = #{origincoordinate,jdbcType=VARCHAR},
+      destinationCoordinate = #{destinationcoordinate,jdbcType=VARCHAR}
+    where tripId = #{tripid,jdbcType=INTEGER}
+  </update>
+     <select id="selectTripList" parameterType="Trip" 
+                                           resultType="Trip">
+                                            
+		SELECT * FROM trip 
+		
+		
+		<!-- 执行分页查询 -->
+		</select>
+</mapper>

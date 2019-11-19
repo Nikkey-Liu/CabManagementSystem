@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.dao.EmergencyRecordMapper">
+  <resultMap id="BaseResultMap" type="EmergencyRecord">
+   
+    <id column="itemId" jdbcType="INTEGER" property="itemid" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="applicantName" jdbcType="VARCHAR" property="applicantname" />
+    <result column="emergencyState" jdbcType="VARCHAR" property="emergencystate" />
+    <result column="emergencyProcessorId" jdbcType="INTEGER" property="emergencyprocessorid" />
+    <result column="eventTime" jdbcType="DATE" property="eventtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+   
+    itemId, description, applicantName, emergencyState, emergencyProcessorId, eventTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+   
+    select 
+    <include refid="Base_Column_List" />
+    from emergencyRecord
+    where itemId = #{itemid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+   
+    delete from emergencyRecord
+    where itemId = #{itemid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="EmergencyRecord">
+   
+    insert into emergencyRecord (itemId, description, applicantName, 
+      emergencyState, emergencyProcessorId, eventTime
+      )
+    values (#{itemid,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{applicantname,jdbcType=VARCHAR}, 
+      #{emergencystate,jdbcType=VARCHAR}, #{emergencyprocessorid,jdbcType=INTEGER}, #{eventtime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="EmergencyRecord">
+   
+    insert into emergencyRecord
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemid != null">
+        itemId,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="applicantname != null">
+        applicantName,
+      </if>
+      <if test="emergencystate != null">
+        emergencyState,
+      </if>
+      <if test="emergencyprocessorid != null">
+        emergencyProcessorId,
+      </if>
+      <if test="eventtime != null">
+        eventTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemid != null">
+        #{itemid,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="applicantname != null">
+        #{applicantname,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencystate != null">
+        #{emergencystate,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyprocessorid != null">
+        #{emergencyprocessorid,jdbcType=INTEGER},
+      </if>
+      <if test="eventtime != null">
+        #{eventtime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="EmergencyRecord">
+   
+    update emergencyRecord
+    <set>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="applicantname != null">
+        applicantName = #{applicantname,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencystate != null">
+        emergencyState = #{emergencystate,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyprocessorid != null">
+        emergencyProcessorId = #{emergencyprocessorid,jdbcType=INTEGER},
+      </if>
+      <if test="eventtime != null">
+        eventTime = #{eventtime,jdbcType=DATE},
+      </if>
+    </set>
+    where itemId = #{itemid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="EmergencyRecord">
+   
+    update emergencyRecord
+    set description = #{description,jdbcType=VARCHAR},
+      applicantName = #{applicantname,jdbcType=VARCHAR},
+      emergencyState = #{emergencystate,jdbcType=VARCHAR},
+      emergencyProcessorId = #{emergencyprocessorid,jdbcType=INTEGER},
+      eventTime = #{eventtime,jdbcType=DATE}
+    where itemId = #{itemid,jdbcType=INTEGER}
+  </update>
+   <select id="selectEmergencyRecordList" parameterType="EmergencyRecord" 
+                                           resultType="EmergencyRecord">
+                                            
+		SELECT * FROM emergencyRecord 
+		
+		
+		<!-- 执行分页查询 -->
+		</select>
+</mapper>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.dao.TripApplyMapper">
+  <resultMap id="BaseResultMap" type="TripApply">
+   
+    <id column="tripApplyId" jdbcType="INTEGER" property="tripapplyid" />
+    <result column="tripApplyState" jdbcType="VARCHAR" property="tripapplystate" />
+    <result column="tripApplyDate" jdbcType="DATE" property="tripapplydate" />
+    <result column="origin" jdbcType="VARCHAR" property="origin" />
+    <result column="destination" jdbcType="VARCHAR" property="destination" />
+    <result column="passengerId" jdbcType="INTEGER" property="passengerid" />
+    <result column="distance" jdbcType="DOUBLE" property="distance" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="startTime" jdbcType="TIMESTAMP" property="starttime" />
+    <result column="endTime" jdbcType="TIMESTAMP" property="endtime" />
+    <result column="peopleNumber" jdbcType="INTEGER" property="peoplenumber" />
+    <result column="specialService" jdbcType="VARCHAR" property="specialservice" />
+    <result column="originCoordinate" jdbcType="VARCHAR" property="origincoordinate" />
+    <result column="destinationCooradinate" jdbcType="VARCHAR" property="destinationcooradinate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+   
+    tripApplyId, tripApplyState, tripApplyDate, origin, destination, passengerId, distance, 
+    price, startTime, endTime, peopleNumber, specialService, originCoordinate, destinationCooradinate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+   
+    select 
+    <include refid="Base_Column_List" />
+    from tripApply
+    where tripApplyId = #{tripapplyid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+   
+    delete from tripApply
+    where tripApplyId = #{tripapplyid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="TripApply">
+   
+    insert into tripApply (tripApplyId, tripApplyState, tripApplyDate, 
+      origin, destination, passengerId, 
+      distance, price, startTime, 
+      endTime, peopleNumber, specialService, 
+      originCoordinate, destinationCooradinate
+      )
+    values (#{tripapplyid,jdbcType=INTEGER}, #{tripapplystate,jdbcType=VARCHAR}, #{tripapplydate,jdbcType=DATE}, 
+      #{origin,jdbcType=VARCHAR}, #{destination,jdbcType=VARCHAR}, #{passengerid,jdbcType=INTEGER}, 
+      #{distance,jdbcType=DOUBLE}, #{price,jdbcType=DOUBLE}, #{starttime,jdbcType=TIMESTAMP}, 
+      #{endtime,jdbcType=TIMESTAMP}, #{peoplenumber,jdbcType=INTEGER}, #{specialservice,jdbcType=VARCHAR}, 
+      #{origincoordinate,jdbcType=VARCHAR}, #{destinationcooradinate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="TripApply">
+   
+    insert into tripApply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tripapplyid != null">
+        tripApplyId,
+      </if>
+      <if test="tripapplystate != null">
+        tripApplyState,
+      </if>
+      <if test="tripapplydate != null">
+        tripApplyDate,
+      </if>
+      <if test="origin != null">
+        origin,
+      </if>
+      <if test="destination != null">
+        destination,
+      </if>
+      <if test="passengerid != null">
+        passengerId,
+      </if>
+      <if test="distance != null">
+        distance,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="starttime != null">
+        startTime,
+      </if>
+      <if test="endtime != null">
+        endTime,
+      </if>
+      <if test="peoplenumber != null">
+        peopleNumber,
+      </if>
+      <if test="specialservice != null">
+        specialService,
+      </if>
+      <if test="origincoordinate != null">
+        originCoordinate,
+      </if>
+      <if test="destinationcooradinate != null">
+        destinationCooradinate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tripapplyid != null">
+        #{tripapplyid,jdbcType=INTEGER},
+      </if>
+      <if test="tripapplystate != null">
+        #{tripapplystate,jdbcType=VARCHAR},
+      </if>
+      <if test="tripapplydate != null">
+        #{tripapplydate,jdbcType=DATE},
+      </if>
+      <if test="origin != null">
+        #{origin,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null">
+        #{destination,jdbcType=VARCHAR},
+      </if>
+      <if test="passengerid != null">
+        #{passengerid,jdbcType=INTEGER},
+      </if>
+      <if test="distance != null">
+        #{distance,jdbcType=DOUBLE},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="starttime != null">
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="peoplenumber != null">
+        #{peoplenumber,jdbcType=INTEGER},
+      </if>
+      <if test="specialservice != null">
+        #{specialservice,jdbcType=VARCHAR},
+      </if>
+      <if test="origincoordinate != null">
+        #{origincoordinate,jdbcType=VARCHAR},
+      </if>
+      <if test="destinationcooradinate != null">
+        #{destinationcooradinate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="TripApply">
+   
+    update tripApply
+    <set>
+      <if test="tripapplystate != null">
+        tripApplyState = #{tripapplystate,jdbcType=VARCHAR},
+      </if>
+      <if test="tripapplydate != null">
+        tripApplyDate = #{tripapplydate,jdbcType=DATE},
+      </if>
+      <if test="origin != null">
+        origin = #{origin,jdbcType=VARCHAR},
+      </if>
+      <if test="destination != null">
+        destination = #{destination,jdbcType=VARCHAR},
+      </if>
+      <if test="passengerid != null">
+        passengerId = #{passengerid,jdbcType=INTEGER},
+      </if>
+      <if test="distance != null">
+        distance = #{distance,jdbcType=DOUBLE},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="starttime != null">
+        startTime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        endTime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="peoplenumber != null">
+        peopleNumber = #{peoplenumber,jdbcType=INTEGER},
+      </if>
+      <if test="specialservice != null">
+        specialService = #{specialservice,jdbcType=VARCHAR},
+      </if>
+      <if test="origincoordinate != null">
+        originCoordinate = #{origincoordinate,jdbcType=VARCHAR},
+      </if>
+      <if test="destinationcooradinate != null">
+        destinationCooradinate = #{destinationcooradinate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tripApplyId = #{tripapplyid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="TripApply">
+   
+    update tripApply
+    set tripApplyState = #{tripapplystate,jdbcType=VARCHAR},
+      tripApplyDate = #{tripapplydate,jdbcType=DATE},
+      origin = #{origin,jdbcType=VARCHAR},
+      destination = #{destination,jdbcType=VARCHAR},
+      passengerId = #{passengerid,jdbcType=INTEGER},
+      distance = #{distance,jdbcType=DOUBLE},
+      price = #{price,jdbcType=DOUBLE},
+      startTime = #{starttime,jdbcType=TIMESTAMP},
+      endTime = #{endtime,jdbcType=TIMESTAMP},
+      peopleNumber = #{peoplenumber,jdbcType=INTEGER},
+      specialService = #{specialservice,jdbcType=VARCHAR},
+      originCoordinate = #{origincoordinate,jdbcType=VARCHAR},
+      destinationCooradinate = #{destinationcooradinate,jdbcType=VARCHAR}
+    where tripApplyId = #{tripapplyid,jdbcType=INTEGER}
+  </update>
+   <select id="selectTripApplyList" parameterType="TripApply" 
+                                           resultType="TripApply">
+                                            
+		SELECT * FROM tripApply 
+		
+		
+		<!-- 执行分页查询 -->
+		</select>
+</mapper>

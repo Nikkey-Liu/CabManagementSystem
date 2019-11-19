@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.dao.AdminMapper">
+
+  <resultMap id="BaseResultMap" type="Admin">
+   
+    <id column="adminId" jdbcType="INTEGER" property="adminid" />
+    <result column="adminName" jdbcType="VARCHAR" property="adminname" />
+    <result column="dob" jdbcType="DATE" property="dob" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="loginAttempts" jdbcType="INTEGER" property="loginattempts" />
+    <result column="locked" jdbcType="BIT" property="locked" />
+    <result column="activated" jdbcType="BIT" property="activated" />
+    <result column="lastLogin" jdbcType="TIMESTAMP" property="lastlogin" />
+    <result column="phoneNumber" jdbcType="VARCHAR" property="phonenumber" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="adminPassword" jdbcType="VARCHAR" property="adminpassword" />
+  </resultMap>
+  <sql id="Base_Column_List">
+   
+    adminId, adminName, dob, email, loginAttempts, locked, activated, lastLogin, phoneNumber, 
+    address, adminPassword
+  </sql>
+  <select id="selectByNamePassword" parameterType="String" resultType="Admin">
+   
+    select 
+   *
+    from admin
+    where adminName = #{adminname} and adminPassword=#{password} 
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+   
+    select 
+   *
+    from admin
+    where adminId =  #{adminid,jdbcType=INTEGER} 
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+   
+    delete from admin
+    where adminId = #{adminid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="Admin">
+   
+    insert into admin (adminId, adminName, dob, 
+      email, loginAttempts, locked, 
+      activated, lastLogin, phoneNumber, 
+      address, adminPassword)
+    values (#{adminid,jdbcType=INTEGER}, #{adminname,jdbcType=VARCHAR}, #{dob,jdbcType=DATE}, 
+      #{email,jdbcType=VARCHAR}, #{loginattempts,jdbcType=INTEGER}, #{locked,jdbcType=BIT}, 
+      #{activated,jdbcType=BIT}, #{lastlogin,jdbcType=TIMESTAMP}, #{phonenumber,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{adminpassword,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="Admin">
+   
+    insert into admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="adminid != null">
+        adminId,
+      </if>
+      <if test="adminname != null">
+        adminName,
+      </if>
+      <if test="dob != null">
+        dob,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="loginattempts != null">
+        loginAttempts,
+      </if>
+      <if test="locked != null">
+        locked,
+      </if>
+      <if test="activated != null">
+        activated,
+      </if>
+      <if test="lastlogin != null">
+        lastLogin,
+      </if>
+      <if test="phonenumber != null">
+        phoneNumber,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="adminpassword != null">
+        adminPassword,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="adminid != null">
+        #{adminid,jdbcType=INTEGER},
+      </if>
+      <if test="adminname != null">
+        #{adminname,jdbcType=VARCHAR},
+      </if>
+      <if test="dob != null">
+        #{dob,jdbcType=DATE},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="loginattempts != null">
+        #{loginattempts,jdbcType=INTEGER},
+      </if>
+      <if test="locked != null">
+        #{locked,jdbcType=BIT},
+      </if>
+      <if test="activated != null">
+        #{activated,jdbcType=BIT},
+      </if>
+      <if test="lastlogin != null">
+        #{lastlogin,jdbcType=DATE},
+      </if>
+      <if test="phonenumber != null">
+        #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="adminpassword != null">
+        #{adminpassword,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="Admin">
+   
+    update admin
+    <set>
+      <if test="adminname != null">
+        adminName = #{adminname,jdbcType=VARCHAR},
+      </if>
+      <if test="dob != null">
+        dob = #{dob,jdbcType=DATE},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="loginattempts != null">
+        loginAttempts = #{loginattempts,jdbcType=INTEGER},
+      </if>
+      <if test="locked != null">
+        locked = #{locked,jdbcType=BIT},
+      </if>
+      <if test="activated != null">
+        activated = #{activated,jdbcType=BIT},
+      </if>
+      <if test="lastlogin != null">
+        lastLogin = #{lastlogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="phonenumber != null">
+        phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="adminpassword != null">
+        adminPassword = #{adminpassword,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where adminId = #{adminid,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="Admin">
+   
+    update admin
+    set adminName = #{adminname,jdbcType=VARCHAR},
+      dob = #{dob,jdbcType=DATE},
+      email = #{email,jdbcType=VARCHAR},
+      loginAttempts = #{loginattempts,jdbcType=INTEGER},
+      locked = #{locked,jdbcType=BIT},
+      activated = #{activated,jdbcType=BIT},
+      lastLogin = #{lastlogin,jdbcType=TIMESTAMP},
+      phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      adminPassword = #{adminpassword,jdbcType=VARCHAR}
+    where adminId = #{adminid,jdbcType=INTEGER}
+  </update>
+    <select id="selectAdminList" parameterType="Admin" 
+                                           resultType="Admin">
+                                            
+		SELECT * FROM admin 
+		
+		
+		<!-- 执行分页查询 -->
+		</select>
+</mapper>
