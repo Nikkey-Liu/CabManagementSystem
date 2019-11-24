@@ -24,22 +24,18 @@ public class LostItemRecordServiceImpl implements LostItemRecordService {
 		return null;
 	}
 
-	@Override
-	public int updateByPrimaryKeySelective(LostItemRecord record) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int updateByPrimaryKey(LostItemRecord record) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 
 	@Override
 	public List<LostItemRecord> viewList(LostItemRecord record) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int editLostItemRecoder(LostItemRecord record) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

@@ -40,4 +40,10 @@ public class User_PassengerServiceImpl implements User_PassengerService {
 		return null;
 	}
 
+	@Override
+	public Passenger findByPassengerName(String passengerNAME) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

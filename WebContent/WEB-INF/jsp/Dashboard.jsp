@@ -427,7 +427,7 @@
 								<b class="arrow"></b>
 							</li>
 							<li class="">
-								<a href="jqgrid.html">
+								<a href="${pageContext.request.contextPath }/viewVehicleManage.action">
 									<i class="menu-icon fa fa-caret-right"></i>
 									VehicleManagement
 								</a>

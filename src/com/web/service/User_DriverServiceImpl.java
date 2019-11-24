@@ -17,31 +17,31 @@ public class User_DriverServiceImpl implements User_DriverService {
     DriverMapper driverMapper;
 	@Override
 	public int deleteDriver(Integer driverid) {
-		// TODO Auto-generated method stub
+		
 		return driverMapper.deleteByPrimaryKey(driverid);
 	}
 
 	@Override
 	public int addDriver(Driver record) {
-		// TODO Auto-generated method stub
+		
 		return driverMapper.insert(record);
 	}
 
 	@Override
 	public Driver findBydriverName(String driverName) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public Driver findBydriverId(int driverid) {
-		// TODO Auto-generated method stub
+		
 		return driverMapper.selectByPrimaryKey(driverid);
 	}
 
 	@Override
 	public int editDriver(Driver record) {
-		// TODO Auto-generated method stub
+		
 		return driverMapper.updateByPrimaryKey(record);
 	}
 

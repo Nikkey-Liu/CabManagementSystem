@@ -2,7 +2,7 @@ package com.web.dao;
 
 import java.util.List;
 
-
+import com.web.pojo.EmergencyRecord;
 import com.web.pojo.LostItemRecord;
 
 public interface LostItemRecordMapper {
@@ -25,4 +25,6 @@ public interface LostItemRecordMapper {
     int updateByPrimaryKey(LostItemRecord record);
     
     public List<LostItemRecord> selectLostItemRecordList(LostItemRecord record);
+    
+    public int selectListCount(LostItemRecord record);
 }

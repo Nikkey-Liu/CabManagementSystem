@@ -2,7 +2,7 @@ package com.web.dao;
 
 import java.util.List;
 
-
+import com.web.pojo.Admin;
 import com.web.pojo.EmergencyRecord;
 
 public interface EmergencyRecordMapper {
@@ -25,4 +25,5 @@ public interface EmergencyRecordMapper {
     int updateByPrimaryKey(EmergencyRecord record);
     
     public List<EmergencyRecord> selectEmergencyRecordList(EmergencyRecord record);
+    public int selectListCount(EmergencyRecord record);
 }

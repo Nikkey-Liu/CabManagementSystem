@@ -2,7 +2,7 @@ package com.web.dao;
 
 import java.util.List;
 
-
+import com.web.pojo.Passenger;
 import com.web.pojo.PassengerPaymentRecord;
 
 public interface PassengerPaymentRecordMapper {
@@ -24,6 +24,6 @@ public interface PassengerPaymentRecordMapper {
    
     int updateByPrimaryKey(PassengerPaymentRecord record);
 
-    
+    public int selectListCount(PassengerPaymentRecord record);
     public List<PassengerPaymentRecord> selectPassengerPaymentRecordList(PassengerPaymentRecord record);
 }

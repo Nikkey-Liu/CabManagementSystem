@@ -22,7 +22,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		// 获取Session
 		HttpSession session = request.getSession();
 		Admin admin = (Admin) session.getAttribute("USER_SESSION");
-		System.out.println(admin);
+	
 		// 判断Session中是否有用户数据，如果有，则返回true,继续向下执行
 		if (admin != null) {
 			return true;
@@ -37,10 +37,12 @@ public class LoginInterceptor implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request, 
 			HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
+		System.out.println("execute PermessionInterceptor --- postHandler() ---");
 	}
 	@Override
 	public void afterCompletion(HttpServletRequest request, 
 			HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
+		System.out.println("execute PermessionInterceptor --- afterCompletion() ---");
 	}
 }

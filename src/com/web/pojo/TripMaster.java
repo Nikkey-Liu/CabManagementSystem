@@ -2,7 +2,8 @@ package com.web.pojo;
 
 import java.util.Date;
 
-public class TripMaster {
+public abstract class TripMaster {
+	
 	 private String origin;
 
 	   

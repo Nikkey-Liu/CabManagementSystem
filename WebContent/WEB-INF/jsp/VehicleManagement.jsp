@@ -435,7 +435,7 @@
 								<b class="arrow"></b>
 							</li>
 							<li class="">
-							<a href="${pageContext.request.contextPath }/viewVehicleManage.action">
+								<a href="${pageContext.request.contextPath }/viewVehicleManage.action">
 									<i class="menu-icon fa fa-caret-right"></i>
 									VehicleManagement
 								</a>
@@ -628,7 +628,7 @@
 							</h1>
 							<button class="btn" data-toggle="modal" data-target="#newDriverDialog">
 												<i class="ace-icon fa fa-pencil align-top bigger-125"></i>
-												Create a Driver Account
+												Create a Vehicle Account
 											</button>
 						</div><!-- /.page-header -->
                            
@@ -641,33 +641,27 @@
 					<table class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>DriverId</th>
+								<th>VehicleId</th>
+								<th>VehicleNumber</th>
 								<th>DriverName</th>
-								<th>DathOfBirth</th>
-								<th>Email</th>
-								<th>Activated</th>
+								<th>Color</th>
+								<th>VehicleType</th>
 								
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach items="${page.rows}" var="row">
 								<tr>
-									<td>${row.driverid}</td>
+									<td>${row.vehicleid}</td>
+									<td>${row.vehiclenumber}</td>
 									<td>${row.drivername}</td>
-									<td>${row.dob}</td>
-									
-									<td>${row.email}</td>
-									<td>${row.activated}</td>
-									
+									<td>${row.color}</td>
+									<td>${row.vehicletype}</td>
 									<td>
-										            <a href="#"class="btn btn-xs btn-success" data-toggle="modal" data-target="#editDriverDialog" onclick="edit('${row.driverid}');">
+										           <button href="#"class="btn btn-xs btn-success" data-toggle="modal" data-target="#CheckDriverDialog" onclick="edit('${row.vehicleid}');">
 														<i class="ace-icon fa fa-pencil-square-o bigger-120" title="Edit"></i>
-													</a>
-													<a href="#"class="btn btn-xs btn-success" data-toggle="modal" data-target="#checkDriverDialog" onclick="MoreIN('${row.driverid}');">
-														<i class="ace-icon fa fa-pencil-square-o bigger-120" title="MoreIN"></i>
-													</a>
-													
-													<a href="#"class="btn btn-xs btn-danger" onclick="del('${row.driverid}');">
+													</button>													
+													<a href="#"class="btn btn-xs btn-danger" onclick="del('${row.vehicleid}');">
 														<i class="ace-icon fa fa-trash-o bigger-120" title="Delete"></i>
 													</a>
 										
@@ -677,7 +671,7 @@
 						</tbody>
 					</table>
 					<div class="col-md-12 text-right">
-						<itheima:page url="${pageContext.request.contextPath }/viewDriverManage.action" />
+						<itheima:page url="${pageContext.request.contextPath }/viewVehicleManage.action" />
 					</div>
 					<!-- /.panel-body -->
 				</div>
@@ -701,317 +695,7 @@
 				
 				
 				
-			<!-- 创建客户模态框 -->
-<div class="modal fade" id="newDriverDialog" tabindex="-1" role="dialog"
-	aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h4 class="modal-title" id="myModalLabel">New_Driver</h4>
-			</div>
-			<div class="modal-body">
-				<form class="form-horizontal"  action="${pageContext.request.contextPath}/addDriver.action" 
-			                       method="post" id="new_Driver_form">
-					<div class="form-group">
-						<label for="new_DriverName" class="col-sm-2 control-label">
-						   Name
-						</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="New_Drivername" placeholder="XXX" name="drivername" />
-						</div>
-					</div>	
-						<div class="form-group">
-						<label for="new_Driverdriverpassword" class="col-sm-2 control-label">
-						  Password
-						</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="new_Driverdriverpassword" placeholder="2015" name="driverpassword" />
-						</div>
-					</div>	
-						<div class="form-group">
-						<label for="new_Driverdob" class="col-sm-2 control-label">
-						 Date of Birth
-						</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="new_Driverdob" placeholder="2015-11-20" name="dob" />
-						</div>
-					</div>	
-						<div class="form-group">
-						<label for="new_Driverdriverstate" class="col-sm-2 control-label">
-						 Driverstate
-						</label>
-							<div class="col-sm-10"> 
-							<select	class="form-control" id="new_Driverdriverstate"  name="driverstate">
-								<option value="">--please select--</option>
-								
-									<option value="1">
-								   Online
-									</option>
-							<option value="0">
-								    Offline
-									</option>
-							</select>
-						</div>
-						</div>
-						
-						<div class="form-group">
-						<label for="new_Driveremail" class="col-sm-2 control-label">
-						 Email
-						</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="new_Driveremail" placeholder="_0@studentmail.ul.ie" name="email" />
-						</div>
-					</div>	
-					<div class="form-group">
-						<label for="new_Driverlocked" class="col-sm-2 control-label">
-					   IsLocked or not
-						</label>
-							<div class="col-sm-10"> 
-							<select	class="form-control" id="new_Driverlocked"  name="locked">
-								<option value="">--please select--</option>
-								
-									<option value="1">
-								   Locked
-									</option>
-							<option value="0">
-								    NotLocked
-									</option>
-							</select>
-						</div>
-						
-					</div>	
-					<div class="form-group">
-						<label for="new_Driveractivated" class="col-sm-2 control-label">
-						   Is Activated or not
-						</label>
-					
-						<div class="col-sm-10"> 
-							<select	class="form-control" id="new_Driveractivated"  name="activated">
-								<option value="">--please select--</option>
-								
-									<option value="1">
-								   Activated
-									</option>
-							<option value="0">
-								    NotActivated
-									</option>
-							</select>
-						</div>
-					</div>	
-					<div class="form-group">
-						<label for="new_Driversubsribed" class="col-sm-2 control-label">
-						 Subscribed
-						</label>
-						
-							<div class="col-sm-10"> 
-							<select	class="form-control" id="new_Driversubscribed"  name="subscribed">
-								<option value="">--please select--</option>
-								
-									<option value="1">
-								   Subscribed
-									</option>
-							<option value="0">
-								    NoSubscribed
-									</option>
-							</select>
-						</div>
-					</div>	
-						<div class="form-group">
-						<label for="new_Driver" class="col-sm-2 control-label">
-						  Phonenumber
-						</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="new_Driverphonenumber" placeholder="1982054" name="phonenumber" />
-						</div>
-					</div>	
-						<div class="form-group">
-						<label for="new_Driver" class="col-sm-2 control-label">
-						 Address
-						</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="new_Driveraddress" placeholder="House,Road,Town,City,Country" name="address" />
-						</div>
-					</div>	
-					
-					<input name="driverid" id="new_Driverdriverid" type="hidden" class="form-control"  aria-describedby="sizing-addon1" />
-					<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
-				<button type="submit" class="btn btn-primary" >Submit</button>
-			</div>
-				</form>
-			</div>
-			
-		</div>
-	</div>
-</div>
-				
-				
-			<!-- 创建客户模态框 -->
-<div class="modal fade" id="editDriverDialog" tabindex="-1" role="dialog"
-	aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h4 class="modal-title" id="myModalLabel">editDriver</h4>
-			</div>
-			<div class="modal-body">
-				<form class="form-horizontal"  action="${pageContext.request.contextPath }/updateDriver.action" 
-			                       method="post" id="edit_Driver_form">
-					<div class="form-group">
-						<label for="edit_DriverName" class="col-sm-2 control-label">
-						   Name
-						</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="editDriverdrivername" placeholder="XXX" name="drivername" value=""/>
-						</div>
-					</div>	
-						<div class="form-group">
-						<label for="edit_Driverdriverpassword" class="col-sm-2 control-label">
-						  Password
-						</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="editDriverdriverpassword" placeholder="2015" name="driverpassword" value=""/>
-						</div>
-					</div>	
-						<div class="form-group">
-						<label for="editDriverdob" class="col-sm-2 control-label">
-						 Date of Birth
-						</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="editDriverdob" placeholder="2015-11-20" name="dob" value=""/>
-						</div>
-					</div>	
-						<div class="form-group">
-						<label for="editDriverdriverstate" class="col-sm-2 control-label">
-						 State
-						</label>
-							<div class="col-sm-10"> 
-							<select	class="form-control" id="editDriverdriverstate"  name="driverstate">
-								<option value="">--please select--</option>
-								
-									<option value="1">
-								   Online
-									</option>
-							<option value="0">
-								    Offline
-									</option>
-							</select>
-						</div>
-					</div>	
-						<div class="form-group">
-						<label for="editDriveremail" class="col-sm-2 control-label">
-						 Email
-						</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="editDriveremail" placeholder="_0@studentmail.ul.ie" name="email"value="" />
-						</div>
-					</div>	
-					<div class="form-group">
-						<label for="editDriverlocked" class="col-sm-2 control-label">
-					   IsLocked or not
-						</label>
-							<div class="col-sm-10"> 
-							<select	class="form-control" id="editDriverlocked"  name="locked" value="">
-								<option value="">--please select--</option>
-								
-									<option value="1">
-								   Locked
-									</option>
-							<option value="0">
-								    NotLocked
-									</option>
-							</select>
-						</div>
-						
-					</div>	
-					<div class="form-group">
-						<label for="editDriveractivated" class="col-sm-2 control-label">
-						   Is Activated or not
-						</label>
-					
-						<div class="col-sm-10"> 
-							<select	class="form-control" id="editDriveractivated"  name="activated" value="">
-								<option value="">--please select--</option>
-								
-									<option value="1">
-								   Activated
-									</option>
-							<option value="0">
-								    NotActivated
-									</option>
-							</select>
-						</div>
-					</div>	
-					<div class="form-group">
-						<label for="edit_Driverloginattempts" class="col-sm-2 control-label" >
-						Loginattempts
-						</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="editDriverloginattempts" placeholder="0" name="loginattempts"value="" />
-						</div>
-					</div>	
-						<div class="form-group">
-						<label for="edit_Driverloginattempts" class="col-sm-2 control-label">
-					lastlogin
-						</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="editDriverlastlogin" placeholder="0" name="lastlogin"value="" />
-						</div>
-					</div>	
-					<div class="form-group">
-						<label for="editDriversubscribed" class="col-sm-2 control-label">
-						 Subscribed
-						</label>
-						
-							<div class="col-sm-10"> 
-							<select	class="form-control" id="editDriversubscribed"  name="subscribed" value="">
-								<option value="">--please select--</option>
-								
-									<option value="1">
-								   Subscribed
-									</option>
-							<option value="0">
-								    NoSubscribed
-									</option>
-							</select>
-						</div>
-					</div>	
-						<div class="form-group">
-						<label for="new_Driver" class="col-sm-2 control-label">
-						  PhonenumbereditDriverphonenumber
-						</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="editDriverphonenumber" placeholder="1982054" name="phonenumber"value="" />
-						</div>
-					</div>	
-						<div class="form-group">
-						<label for="editDriveraddress" class="col-sm-2 control-label">
-						 Address
-						</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="editDriveraddress" placeholder="House,Road,Town,City,Country" name="address"value="" />
-						</div>
-					</div>	
-					
-					<input name="driverid" id="editDriverdriverid" type="hidden" class="form-control"  aria-describedby="sizing-addon1" value=""/>
-					<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
-				<button type="submit" class="btn btn-primary" >Submit</button>
-			</div>
-				</form>
-			</div>
-			
-		</div>
-	</div>
-</div>
-	
-			<!-- 创建客户模态框 -->
+					<!-- 创建客户模态框 -->
 <div class="modal fade" id="CheckDriverDialog" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
@@ -1020,25 +704,110 @@
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title" id="myModalLabel">学院</h4>
+				<h4 class="modal-title" id="myModalLabel">Edit_Vehicle</h4>
 			</div>
 			<div class="modal-body">
-				<form class="form-horizontal"  action="${pageContext.request.contextPath }/managercollege/updatecollegeInfor.action" 
-			                       method="post" id="new_customer_form">
+				<form class="form-horizontal"  action="${pageContext.request.contextPath}/updateVehicle.action" 
+			                       method="post" id="Edit_Vehicle_form">
 					<div class="form-group">
-						<label for="new_customerName" class="col-sm-2 control-label">
-						   学院名
+						<label for="Edit_Vehiclenumber" class="col-sm-2 control-label">
+						 Vehiclenumber
 						</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="collegename" placeholder="2015" name="collegename" />
+							<input type="text" class="form-control" id="Edit_Vehiclenumber" placeholder="XXX" name="vehiclenumber" />
+						</div>
+					</div>	
+						<div class="form-group">
+						<label for="Edit_Vehiclemanufacturer" class="col-sm-2 control-label">
+						  Manufacturer
+						</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="Edit_Vehiclemanufacturer" placeholder="2015" name="manufacturer" />
+						</div>
+					</div>	
+						<div class="form-group">
+						<label for="Edit_Vehiclemodels" class="col-sm-2 control-label">
+					Model
+						</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="Edit_Vehiclemodels" placeholder="2015-11-20" name="model" />
+						</div>
+					</div>	
+						<div class="form-group">
+						<label for="new_Driverdriverstate" class="col-sm-2 control-label">
+						 vehicleType
+						</label>
+							<div class="col-sm-10"> 
+							<select	class="form-control" id="Edit_VehiclevehicleType"  name="vehicletype">
+								<option value="">--please select--</option>
+								
+									<option value="1">
+								  CompactCar
+									</option>
+							<option value="3">
+								   LuxuryCar
+									</option>
+									<option value="2">
+								    EcononmyCar
+									</option>
+							</select>
+						</div>
+						</div>
+						
+						<div class="form-group">
+						<label for="Edit_Vehiclecolor" class="col-sm-2 control-label">
+						 color
+						</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="Edit_Vehiclecolor" placeholder="yellow" name="color" />
+						</div>
+					</div>	
+					<div class="form-group">
+						<label for="Edit_Vehicleownerid" class="col-sm-2 control-label">
+						  ownerid
+						</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="Edit_Vehicleownerid" placeholder="1982054" name="ownerid" />
+						</div>
+					</div>	
+				<div class="form-group">
+						<label for="Edit_Vehicledrivername" class="col-sm-2 control-label">
+						  ownerName
+						</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="Edit_Vehicledrivername" placeholder="1982054" name="drivername" />
+						</div>
+					</div>	
+		
+			<div class="form-group">
+						<label for="Edit_Vehiclecapacity" class="col-sm-2 control-label">
+						  capacity
+						</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="Edit_Vehiclecapacity" placeholder="1982054" name="capacity" />
+						</div>
+					</div>	
+						<div class="form-group">
+						<label for="Edit_Vehicleenginenumber" class="col-sm-2 control-label">
+						  Enginenumber
+						</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="Edit_Vehicleenginenumber" placeholder="1982054" name="enginenumber" />
+						</div>
+					</div>	
+						<div class="form-group">
+						<label for="Edit_Vehiclechasisnumber" class="col-sm-2 control-label">
+						 Chasisnumber
+						</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="Edit_Vehiclechasisnumber" placeholder="House,Road,Town,City,Country" name="chasisnumber" />
 						</div>
 					</div>	
 					
-					
-					<input name="collegeid" id="collegeid" type="hidden" class="form-control"  aria-describedby="sizing-addon1" />
+					<input name="vehicleid" id="Edit_Vehiclevehicleid" type="hidden" class="form-control"  aria-describedby="sizing-addon1" />
 					<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-				<button type="submit" class="btn btn-primary" >创建</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
+				<button type="submit" class="btn btn-primary" >Submit</button>
 			</div>
 				</form>
 			</div>
@@ -1046,12 +815,135 @@
 		</div>
 	</div>
 </div>	
+			<!-- 创建客户模态框 -->			
+					
+		
+				
+			
+			
+			
+			
+			
+			
+			
+			
+<div class="modal fade" id="newDriverDialog" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="myModalLabel">New_Vehicle</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal"  action="${pageContext.request.contextPath}/addVehicle.action" 
+			                       method="post" id="New_Vehicle_form">
+					<div class="form-group">
+						<label for="new_DriverName" class="col-sm-2 control-label">
+						 Vehiclenumber
+						</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="New_Vehiclenumber" placeholder="XXX" name="vehiclenumber" />
+						</div>
+					</div>	
+						<div class="form-group">
+						<label for="new_Driverdriverpassword" class="col-sm-2 control-label">
+						  Manufacturer
+						</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="new_Driverdriverpassword" placeholder="2015" name="manufacturer" />
+						</div>
+					</div>	
+						<div class="form-group">
+						<label for="new_Driverdob" class="col-sm-2 control-label">
+					Model
+						</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="new_Driverdob" placeholder="2015-11-20" name="model" />
+						</div>
+					</div>	
+						<div class="form-group">
+						<label for="new_Driverdriverstate" class="col-sm-2 control-label">
+						 vehicleType
+						</label>
+							<div class="col-sm-10"> 
+							<select	class="form-control" id="new_Driverdriverstate"  name="vehicletype">
+								<option value="">--please select--</option>
+								
+									<option value="1">
+								  CompactCar
+									</option>
+							<option value="3">
+								   LuxuryCar
+									</option>
+									<option value="2">
+								    EcononmyCar
+									</option>
+							</select>
+						</div>
+						</div>
+						
+						<div class="form-group">
+						<label for="new_Driveremail" class="col-sm-2 control-label">
+						 color
+						</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="new_Driveremail" placeholder="yellow" name="color" />
+						</div>
+					</div>	
+					<div class="form-group">
+						<label for="new_Driver" class="col-sm-2 control-label">
+						  ownerId
+						</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="new_Driverphonenumber" placeholder="1982054" name="ownerid" />
+						</div>
+					</div>	
+		
+			<div class="form-group">
+						<label for="new_Driver" class="col-sm-2 control-label">
+						  capacity
+						</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="new_Driverphonenumber" placeholder="1982054" name="capacity" />
+						</div>
+					</div>	
+						<div class="form-group">
+						<label for="new_Driver" class="col-sm-2 control-label">
+						  Enginenumber
+						</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="new_Driverphonenumber" placeholder="1982054" name="enginenumber" />
+						</div>
+					</div>	
+						<div class="form-group">
+						<label for="new_Driver" class="col-sm-2 control-label">
+						 Chasisnumber
+						</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="new_Driveraddress" placeholder="House,Road,Town,City,Country" name="chasisnumber" />
+						</div>
+					</div>	
+					
+					<input name="vehicleid" id="new_Driverdriverid" type="hidden" class="form-control"  aria-describedby="sizing-addon1" />
+					<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
+				<button type="submit" class="btn btn-primary" >Submit</button>
+			</div>
+				</form>
+			</div>
+			
+		</div>
+	</div>
+</div>
+				
+
+		
 			<!-- 创建客户模态框 -->
 
-				
-				
-				
-				
+		
 				
 				
 			</div><!-- /.main-content -->
@@ -1090,11 +982,12 @@
 		<!-- basic scripts -->
 
 		<!--[if !IE]> -->
-	<script src="${pageContext.request.contextPath }/assets/js/jquery-2.1.4.min.js"></script>
+	<!-- <script src="${pageContext.request.contextPath }/assets/js/jquery-2.1.4.min.js"></script>-->
+
 		<!-- <![endif]-->
 
 		<!--[if !IE]> -->
-<!--	<script src="${pageContext.request.contextPath }/assets/js/jquery-1.11.3.min.js"></script>-->
+	<script src="${pageContext.request.contextPath }/assets/js/jquery-1.11.3.min.js"></script>
 
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='${pageContext.request.contextPath }/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
@@ -1114,40 +1007,40 @@
 		function edit(id) {
 			$.ajax({
 		        type:"Post",
-		        url:"<%=basePath%>checkDriver.action",
+		        url:"<%=basePath%>checkVehiclebyVehicleid.action",
 		        data:{"id":id},
 		        success:function(data) {  
-		        	$("#editDriverdriverid").val(data.driverid);
-		            $("#editDriverdrivername").val(data.drivername);
-		            $("#editDriverdob").val(data.dob);
-		            $("#editDriverdriverstate").val(changeBooleantoint(data.driverstate));
-		            $("#editDriveremail").val(data.email);
-		            $("#editDriverlocked").val(changeBooleantoint(data.locked));
-		            $("#editDriverlastlogin").val(data.lastlogin);
+		        	$("#Edit_Vehicledrivername").val(data.drivername);
+		        	$("#Edit_Vehiclenumber").val(data.vehiclenumber);
+		            $("#Edit_Vehiclemanufacturer").val(data.manufacturer);
+		            $("#Edit_Vehiclemodels").val(data.model);
+		            $("#Edit_VehiclevehicleType ").val(changToInt(data.vehicleType));
+		            $("#Edit_Vehiclecolor").val(data.color);
+		            $("#Edit_Vehicleownerid").val(data.ownerid);
+		            $("#Edit_Vehiclecapacity").val(data.capacity);
+		            $("#Edit_Vehicleenginenumber").val(data.enginenumber);
+		            $("#Edit_Vehiclechasisnumber").val(data.chasisnumber);
+		            $("#Edit_Vehiclevehicleid").val(data.vehicleid);
 		            
-		            $("#editDriveractivated").val(changeBooleantoint(data.activated));
-		            $("#editDriversubscribed").val(changeBooleantoint(data.subscribed));
-		            $("#editDriverphonenumber").val(data.phonenumber);
-		            $("#editDriveraddress").val(data.address);
-		            $("#editDriverdriverpassword").val(data.driverpassword);
-		            $("#editDriverloginattempts").val(data.loginattempts);
 		        },
 		    });    		     
 			}
-		function changeBooleantoint(string){
-			var data=0;
-			if (string=="True")
-				{
-				data=1;
-				return data;
+		function changToInt(data)
+		{ 
+			if(data =="AudiLuxuryCar"){
+			return 3;
 				}
-			return data;
+		
+			if ( data =="Audi EcononmyCar" ){
+				return 2;
+				}
+			return 1;
 			
 		}
 			//删除用户
 		function del(id) {
 		    if(confirm('Confirm Delete Action')) {
-		$.post("<%=basePath%>deleteDriver.action",{"id":id},
+		$.post("<%=basePath%>deleteVehicle.action",{"id":id},
 		function(data){
 		            if(data =="OK"){
 		                alert("Delete Success");

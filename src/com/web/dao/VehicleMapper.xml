@@ -12,16 +12,31 @@
     <result column="chasisNumber" jdbcType="VARCHAR" property="chasisnumber" />
     <result column="ownerId" jdbcType="INTEGER" property="ownerid" />
     <result column="capacity" jdbcType="INTEGER" property="capacity" />
+     <result column="vehicletype" jdbcType="VARCHAR" property="vehicletype" />
+
   </resultMap>
+  <select id="selectVehicleList" parameterType="Vehicle" 
+                                           resultType="Vehicle">                                      
+		SELECT * FROM vehicle 
+		</select>
+  <select id="selectByDriverid" parameterType="Integer" 
+                                                 resultType="Vehicle">
+		select * from vehicle where ownerId= #{driverid,jdbcType=INTEGER}
+		
+	</select>
+   <select id="selectListCount" parameterType="Vehicle" 
+                                                 resultType="Integer">
+		select count(*) from vehicle
+	</select>	
   <sql id="Base_Column_List">
    
     vehicleId, vehicleNumber, manufacturer, model, color, engineNumber, chasisNumber, 
-    ownerId, capacity
+    ownerId, capacity,vehicletype
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
    
     select 
-    <include refid="Base_Column_List" />
+   *
     from vehicle
     where vehicleId = #{vehicleid,jdbcType=INTEGER}
   </select>
@@ -32,13 +47,13 @@
   </delete>
   <insert id="insert" parameterType="Vehicle">
    
-    insert into vehicle (vehicleId, vehicleNumber, manufacturer, 
+    insert into vehicle (vehicleNumber, manufacturer, 
       model, color, engineNumber, 
-      chasisNumber, ownerId, capacity
+      chasisNumber, ownerId, capacity,vehicletype
       )
-    values (#{vehicleid,jdbcType=INTEGER}, #{vehiclenumber,jdbcType=VARCHAR}, #{manufacturer,jdbcType=VARCHAR}, 
+    values (#{vehiclenumber,jdbcType=VARCHAR}, #{manufacturer,jdbcType=VARCHAR}, 
       #{model,jdbcType=VARCHAR}, #{color,jdbcType=VARCHAR}, #{enginenumber,jdbcType=VARCHAR}, 
-      #{chasisnumber,jdbcType=VARCHAR}, #{ownerid,jdbcType=INTEGER}, #{capacity,jdbcType=INTEGER}
+      #{chasisnumber,jdbcType=VARCHAR}, #{ownerid,jdbcType=INTEGER}, #{capacity,jdbcType=INTEGER}, #{vehicletype,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="Vehicle">
@@ -144,15 +159,9 @@
       engineNumber = #{enginenumber,jdbcType=VARCHAR},
       chasisNumber = #{chasisnumber,jdbcType=VARCHAR},
       ownerId = #{ownerid,jdbcType=INTEGER},
-      capacity = #{capacity,jdbcType=INTEGER}
+      capacity = #{capacity,jdbcType=INTEGER},
+       vehicletype = #{vehicletype,jdbcType=VARCHAR}
     where vehicleId = #{vehicleid,jdbcType=INTEGER}
   </update>
-   <select id="selectVehicleList" parameterType="Vehicle" 
-                                           resultType="Vehicle">
-                                            
-		SELECT * FROM vehicle 
-		
-		
-		<!-- 执行分页查询 -->
-		</select>
+
 </mapper>

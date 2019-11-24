@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.web.pojo.Admin;
+import com.web.pojo.Driver;
 
 public interface AdminMapper {
    
@@ -27,4 +28,5 @@ public interface AdminMapper {
     
     
     public List<Admin> selectAdminList(Admin record);
+    public int selectListCount(Admin record);
 }

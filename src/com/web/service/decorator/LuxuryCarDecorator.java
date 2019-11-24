@@ -7,10 +7,9 @@ public class LuxuryCarDecorator extends VehicleDecorator{
 	
 	}
 
-	@Override
-	public void setVehicleType(String vehicleType) {
-		vehicleType=vehicleType+" LuxuryCar";
-		iVehicle.setVehicleType(vehicleType);
+	public String getVehicleType() {
+		String vehicleType=super.getVehicleType()+"LuxuryCar";
+		return vehicleType;
 		
 	}
 	

@@ -3,6 +3,7 @@ package com.web.dao;
 import java.util.List;
 
 import com.web.pojo.Trip;
+import com.web.pojo.TripApply;
 
 
 public interface TripMapper {
@@ -24,6 +25,6 @@ public interface TripMapper {
    
     int updateByPrimaryKey(Trip record);
 
-    
+    public int selectListCount(Trip record);
     public List<Trip> selectTripList(Trip record);
 }

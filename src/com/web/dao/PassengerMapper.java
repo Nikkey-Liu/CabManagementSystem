@@ -2,7 +2,7 @@ package com.web.dao;
 
 import java.util.List;
 
-
+import com.web.pojo.EmergencyRecord;
 import com.web.pojo.Passenger;
 
 public interface PassengerMapper {
@@ -24,7 +24,7 @@ public interface PassengerMapper {
    
     int updateByPrimaryKey(Passenger record);
     
-
+    public int selectListCount(Passenger record);
     
     public List<Passenger> selectPassengerList(Passenger record);
 }

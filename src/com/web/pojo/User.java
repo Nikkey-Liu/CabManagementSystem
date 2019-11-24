@@ -3,8 +3,19 @@ package com.web.pojo;
 import java.sql.Timestamp;
 import java.util.Date;
 
-public class User {
-	 private Date dob;
+public  abstract class User {
+	private int userid;
+	 public int getUserid() {
+		return userid;
+	}
+
+
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+
+
+	private Date dob;
 
 	    private String email;
 

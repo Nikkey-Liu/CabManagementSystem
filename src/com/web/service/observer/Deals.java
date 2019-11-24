@@ -4,15 +4,11 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.web.pojo.*;
 
-
-public class Deals implements ISubject {
- public	 List<String> passengerEmail;
- public String dealName;
- public Timestamp fromDate;
- public Timestamp toDate;
- public String description;
- public double discount;
+public class Deals extends DealMaster  implements ISubject {
+private	 List<String> passengerEmail;
+ 
  private List<IObserver> iObserverList =new ArrayList<IObserver> ();
 public List<IObserver> getiObserverList() {
 	return iObserverList;
@@ -27,36 +23,7 @@ public List<String> getPassengerEmail() {
 public void setPassengerEmail(List<String> passengerEmail) {
 	this.passengerEmail = passengerEmail;
 }
-public String getDealName() {
-	return dealName;
-}
-public void setDealName(String dealName) {
-	this.dealName = dealName;
-}
-public Timestamp getFromDate() {
-	return fromDate;
-}
-public void setFromDate(Timestamp fromDate) {
-	this.fromDate = fromDate;
-}
-public Timestamp getToDate() {
-	return toDate;
-}
-public void setToDate(Timestamp toDate) {
-	this.toDate = toDate;
-}
-public String getDescription() {
-	return description;
-}
-public void setDescription(String description) {
-	this.description = description;
-}
-public double getDiscount() {
-	return discount;
-}
-public void setDiscount(double discount) {
-	this.discount = discount;
-}
+
 @Override
 public void registerPassenger(IObserver iObserver) {
 	
@@ -73,7 +40,7 @@ public int notifyPassenger() {
 	for(IObserver dealObserver :this.iObserverList){
 
         for(String themail : passengerEmail) {
-            dealObserver.update(dealName, themail);
+            dealObserver.update(this.dealName, themail);
         }
 	}
 

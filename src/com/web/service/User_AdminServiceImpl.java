@@ -52,4 +52,10 @@ public class User_AdminServiceImpl implements User_AdminService {
 		return null;
 	}
 
+	@Override
+	public Admin findByAdminName(String adminName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

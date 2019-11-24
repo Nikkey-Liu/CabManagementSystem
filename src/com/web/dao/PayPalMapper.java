@@ -2,7 +2,7 @@ package com.web.dao;
 
 import java.util.List;
 
-
+import com.web.pojo.Admin;
 import com.web.pojo.PayPal;
 
 public interface PayPalMapper {
@@ -24,6 +24,6 @@ public interface PayPalMapper {
    
     int updateByPrimaryKey(PayPal record);
 
-    
+    public int selectListCount(PayPal record);
     public List<PayPal> selectPayPalList(PayPal record);
 }

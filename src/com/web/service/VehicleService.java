@@ -1,9 +1,9 @@
 package com.web.service;
 
-import java.util.List;
 
 
 import com.web.pojo.Vehicle;
+import com.web.util.Page;
 
 public interface VehicleService {
    
@@ -19,5 +19,5 @@ public interface VehicleService {
 
 
     
-    public List<Vehicle> viewList(Vehicle record);
+    public Page<Vehicle> viewList(Integer page,Integer rows, Vehicle record);
 }

@@ -2,7 +2,7 @@ package com.web.dao;
 
 import java.util.List;
 
-
+import com.web.pojo.PayPal;
 import com.web.pojo.Review;
 
 public interface ReviewMapper {
@@ -24,6 +24,6 @@ public interface ReviewMapper {
    
     int updateByPrimaryKey(Review record);
 
-    
+    public int selectListCount(Review record);
     public List<Review> selectReviewList(Review record);
 }

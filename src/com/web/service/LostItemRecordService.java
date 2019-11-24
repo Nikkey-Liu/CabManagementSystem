@@ -17,10 +17,7 @@ public interface LostItemRecordService {
     public  List<LostItemRecord>   findByItemName(String itemName);
 
    
-    public  int updateByPrimaryKeySelective(LostItemRecord record);
-
-   
-    public  int updateByPrimaryKey(LostItemRecord record);
+    public  int editLostItemRecoder(LostItemRecord record);
     
     public List<LostItemRecord> viewList(LostItemRecord record);
 }

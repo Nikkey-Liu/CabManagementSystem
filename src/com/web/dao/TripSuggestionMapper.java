@@ -2,7 +2,7 @@ package com.web.dao;
 
 import java.util.List;
 
-
+import com.web.pojo.Trip;
 import com.web.pojo.TripSuggestion;
 
 public interface TripSuggestionMapper {
@@ -24,6 +24,6 @@ public interface TripSuggestionMapper {
    
     int updateByPrimaryKey(TripSuggestion record);
 
-    
+    public int selectListCount(TripSuggestion record);
     public List<TripSuggestion> selectTripSuggestionList(TripSuggestion record);
 }

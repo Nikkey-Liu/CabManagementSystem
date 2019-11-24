@@ -13,10 +13,10 @@ public interface PassengerPaymentRecordService {
     public int insertPassengerPaymentRecord(PassengerPaymentRecord record);
 
    
-    public  List<PassengerPaymentRecord> selectRecordByPassengerId(Integer passengerid);
+    public  List<PassengerPaymentRecord> findRecordByPassengerId(Integer passengerid);
 
    
     public int editPassengerPaymentRecord(PassengerPaymentRecord record);
     
-    public List<PassengerPaymentRecord> selectList(PassengerPaymentRecord record);
+    public List<PassengerPaymentRecord> viewList(PassengerPaymentRecord record);
 }

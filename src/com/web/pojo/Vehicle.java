@@ -1,44 +1,50 @@
 package com.web.pojo;
 
-import com.web.service.decorator.IVehicle;
 
-public class Vehicle implements IVehicle {
+
+public  class Vehicle {
    
     private Integer vehicleid;
 
-   private String vehicleType;
+   private String vehicletype;
    
-   //for decorator
-   public String getVehicleType ()
-   {
-	   return this.vehicleType;
-   }
-   
-    private String vehiclenumber;
+	private String vehiclenumber;
 
-   
     private String manufacturer;
 
-   
-    private String model;
+   private String drivername;
+  
+	private String model;
 
-   
     private String color;
 
-   
     private String enginenumber;
 
-   
     private String chasisnumber;
 
-   
     private Integer ownerid;
 
-   
     private Integer capacity;
+    public String getDrivername() {
+    	return drivername;
+    }
 
+
+    public void setDrivername(String drivername) {
+    	this.drivername = drivername;
+    }
    
-    public Integer getVehicleid() {
+    public String getVehicletype() {
+		return vehicletype;
+	}
+
+
+	public void setVehicletype(String vehicletype) {
+		this.vehicletype = vehicletype;
+	}
+
+
+	public Integer getVehicleid() {
         return vehicleid;
     }
 
@@ -128,9 +134,6 @@ public class Vehicle implements IVehicle {
     }
 
 
-	@Override
-	public void setVehicleType(String vehicleType) {
-	
-		this.vehicleType=vehicleType;
-	}
+
+
 }

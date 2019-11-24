@@ -18,11 +18,7 @@ public class PassengerPaymentRecordServiceImpl implements PassengerPaymentRecord
 		return 0;
 	}
 
-	@Override
-	public List<PassengerPaymentRecord> selectRecordByPassengerId(Integer passengerid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
 	public int editPassengerPaymentRecord(PassengerPaymentRecord record) {
@@ -31,9 +27,16 @@ public class PassengerPaymentRecordServiceImpl implements PassengerPaymentRecord
 	}
 
 	@Override
-	public List<PassengerPaymentRecord> selectList(PassengerPaymentRecord record) {
+	public List<PassengerPaymentRecord> findRecordByPassengerId(Integer passengerid) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<PassengerPaymentRecord> viewList(PassengerPaymentRecord record) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

@@ -7,11 +7,11 @@ public class EcononmyCarDecorator extends VehicleDecorator {
 		
 	}
 
+
 	@Override
-	public void setVehicleType(String vehicleType) {
-		vehicleType=vehicleType+" EcononmyCar";
-		iVehicle.setVehicleType(vehicleType);
-		
+	public String getVehicleType() {
+	String	vehicleType=super.getVehicleType()+" EcononmyCar";
+		return vehicleType;
 	}
 	
 

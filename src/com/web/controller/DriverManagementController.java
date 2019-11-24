@@ -55,7 +55,7 @@ public String update(Driver driver, HttpSession session) {
 @ResponseBody
 public Driver checkMoreIN(int id, HttpSession session) {
 	Driver driver=user_DriverService.findBydriverId(id);
-	System.out.println("---------------------------------------------------------------"+driver.getDrivername());
+	
 	return driver;
   
 	
@@ -77,14 +77,14 @@ public String addDriver(Driver driver, HttpSession session) {
 	    }
 }
 /**
- * 删除subject
+ * 删除driver
  */
 @RequestMapping("/deleteDriver.action")
 @ResponseBody
 public String delete(Integer id) {
 	
     int rows = user_DriverService.deleteDriver(id);
-    System.out.println("---------------------------------------------------------------"+rows);
+    
     if(rows > 0){			
         return "OK";
     }else{
