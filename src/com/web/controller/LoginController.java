@@ -23,6 +23,7 @@ public class LoginController {
 		if(admin != null){	
 			session.setAttribute("USER_SESSION", admin);
 		System.out.println(admin);
+		
 		}else{
 			
 		model.addAttribute("msg", "UserName or Password wrong please try again！");

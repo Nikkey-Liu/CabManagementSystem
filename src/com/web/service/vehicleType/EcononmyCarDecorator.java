@@ -1,8 +1,8 @@
-package com.web.service.decorator;
+package com.web.service.vehicleType;
 
 public class EcononmyCarDecorator extends VehicleDecorator {
 
-	public EcononmyCarDecorator(IVehicle iVehicle) {
+	public EcononmyCarDecorator(IVehicleType iVehicle) {
 		super(iVehicle);
 		
 	}

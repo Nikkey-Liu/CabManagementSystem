@@ -10,11 +10,11 @@ import com.web.dao.DriverMapper;
 import com.web.dao.VehicleMapper;
 
 import com.web.pojo.Vehicle;
-import com.web.service.decorator.CompactCarDecorator;
-import com.web.service.decorator.EcononmyCarDecorator;
-import com.web.service.decorator.IVehicle;
-import com.web.service.decorator.LuxuryCarDecorator;
-import com.web.service.decorator.VehicleAudi;
+import com.web.service.vehicleType.CompactCarDecorator;
+import com.web.service.vehicleType.EcononmyCarDecorator;
+import com.web.service.vehicleType.IVehicleType;
+import com.web.service.vehicleType.LuxuryCarDecorator;
+import com.web.service.vehicleType.VehicleAudi;
 import com.web.util.Page;
 @Service("vehicleService")
 @Transactional
@@ -33,21 +33,21 @@ public class VehicleServiceImpl implements VehicleService {
 	public int addVehicle(Vehicle record) {
 		String vehicleType;
           if(record.getVehicletype().equals("1")){
-         IVehicle iVehicle =new CompactCarDecorator(new VehicleAudi());
+         IVehicleType iVehicle =new CompactCarDecorator(new VehicleAudi());
         	 
         	  vehicleType=iVehicle.getVehicleType();
         	  record.setVehicletype(vehicleType);
         	  return vehicleMapper.insert(record);
           }
           if(record.getVehicletype().equals("2")){
-              IVehicle iVehicle =new EcononmyCarDecorator(new VehicleAudi());
+              IVehicleType iVehicle =new EcononmyCarDecorator(new VehicleAudi());
              	 
              	  vehicleType=iVehicle.getVehicleType();
              	  record.setVehicletype(vehicleType);
              	  return vehicleMapper.insert(record);
                }
           if(record.getVehicletype().equals("3")){
-              IVehicle iVehicle =new LuxuryCarDecorator(new VehicleAudi());
+              IVehicleType iVehicle =new LuxuryCarDecorator(new VehicleAudi());
              	 
              	  vehicleType=iVehicle.getVehicleType();
              	  record.setVehicletype(vehicleType);

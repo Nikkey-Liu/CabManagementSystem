@@ -12,12 +12,7 @@ public class PassengerPaymentRecordServiceImpl implements PassengerPaymentRecord
 		return 0;
 	}
 
-	@Override
-	public int insertPassengerPaymentRecord(PassengerPaymentRecord record) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
+	
 
 
 	@Override
@@ -36,6 +31,15 @@ public class PassengerPaymentRecordServiceImpl implements PassengerPaymentRecord
 	public List<PassengerPaymentRecord> viewList(PassengerPaymentRecord record) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+
+
+	@Override
+	public int addPassengerPaymentRecord(PassengerPaymentRecord record) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 

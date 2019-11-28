@@ -1,4 +1,4 @@
-package com.web.service.observer;
+package com.web.service.promotions;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;

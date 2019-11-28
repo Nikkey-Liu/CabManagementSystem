@@ -1,4 +1,4 @@
-package com.web.service.factory;
+package com.web.service.payment;
 
 
 import com.web.dao.PayPalMapper;
@@ -15,14 +15,15 @@ public class PayByPayPal implements IPaymentMethod {
 
     @Autowired
     private PayPalMapper payPalMapper;
-
+       //HttpServletRequest request, HttpServletResponse response
     @Override
-    public String pay(HttpServletRequest request, HttpServletResponse response) {
-        return null;
+    public String pay() {
+      return "Pay done from Paypal";
+		
     }
-
+//HttpServletRequest request, HttpServletResponse response
     @Override
-    public boolean refund(HttpServletRequest request, HttpServletResponse response) {
+    public boolean refund() {
         return false;
     }
 }

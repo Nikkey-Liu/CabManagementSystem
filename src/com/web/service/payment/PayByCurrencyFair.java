@@ -1,4 +1,4 @@
-package com.web.service.factory;
+package com.web.service.payment;
 
 import org.springframework.stereotype.Component;
 
@@ -7,14 +7,14 @@ import javax.servlet.http.HttpServletResponse;
 
 @Component("PayByCurrencyFair")
 public class PayByCurrencyFair implements IPaymentMethod {
-
+//HttpServletRequest request, HttpServletResponse response
     @Override
-    public String pay(HttpServletRequest request, HttpServletResponse response) {
-        return null;
+    public String pay() {
+    	return "Payment done by cash";
     }
 
     @Override
-    public boolean refund(HttpServletRequest request, HttpServletResponse response) {
+    public boolean refund() {
         return false;
     }
 }

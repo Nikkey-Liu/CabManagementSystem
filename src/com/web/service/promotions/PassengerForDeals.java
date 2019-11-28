@@ -1,4 +1,4 @@
-package com.web.service.observer;
+package com.web.service.promotions;
 
 import com.web.pojo.Passenger;
 
