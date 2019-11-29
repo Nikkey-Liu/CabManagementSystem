@@ -1,10 +1,9 @@
 package com.web.service.promotions;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.web.pojo.*;
+import com.web.pojo.DealMaster;
 
 public class Deals extends DealMaster  implements ISubject {
 	
@@ -38,7 +37,7 @@ public void removePassenger(IObserver iObserver) {
 	this.iObserverList.remove(iObserver);
 }
 @Override
-public int notifyPassenger() {
+public void notifyPassenger() {
 
  System.out.println("All subscribers are notified when the deal goes online ");
 	for(IObserver dealObserver :this.iObserverList){
@@ -46,8 +45,6 @@ public int notifyPassenger() {
             dealObserver.update(this.availablity);
         
 	}
-
-	return iObserverList.size();
 }
 public String getDealName() {
 	return dealName;
