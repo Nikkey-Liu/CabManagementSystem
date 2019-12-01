@@ -7,7 +7,17 @@ public  class Vehicle {
     private Integer vehicleid;
 
    private String vehicletype;
-   
+   private Boolean isverified;
+	public Boolean getIsverified() {
+	return isverified;
+}
+
+
+public void setIsverified(Boolean isverified) {
+	this.isverified = isverified;
+}
+
+
 	private String vehiclenumber;
 
     private String manufacturer;

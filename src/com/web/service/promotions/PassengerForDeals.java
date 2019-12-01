@@ -13,7 +13,7 @@ public class PassengerForDeals extends Passenger implements IObserver {
 	public void update(String availability) {
 		System.out.println("Hello " + passengerName + ", new deals are now "+availability); 
 		
-	}
+	} 
 
 	public String getPassengerName() {
 		return passengerName;

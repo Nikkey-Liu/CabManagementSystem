@@ -1,4 +1,4 @@
-package com.web.testP;
+package com.web.test_;
 
 import org.junit.Test;
 
@@ -17,3 +17,4 @@ System.out.println(myPaymentMethodFactory.getPaymentApproach().pay());
      
 	}
 }
+ 

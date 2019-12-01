@@ -1,4 +1,4 @@
-package com.web.testP;
+package com.web.test_;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ public class ObserverTest {
 	PassengerForDeals dealsPassenger4 = new PassengerForDeals("Razia");
 	
 	
-	
+	  
 	Deals christmasDeal = new Deals("Christmas Deal","Available");
 	
 		

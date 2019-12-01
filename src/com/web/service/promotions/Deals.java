@@ -25,7 +25,7 @@ public Deals(String dealName,String availablity){
 	this.dealName=dealName;
 	this.availablity=availablity;
 }
-
+ 
 @Override
 public void registerPassenger(IObserver iObserver) {
 	
@@ -59,6 +59,4 @@ public void setAvailablity(String availablity) {
 	this.availablity = availablity;
 	notifyPassenger();
 }
-
- 
 }
