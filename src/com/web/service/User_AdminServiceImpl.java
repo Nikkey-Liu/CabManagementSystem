@@ -17,13 +17,13 @@ public class User_AdminServiceImpl implements User_AdminService {
 	@Override
 	public int deleteAdmin(Integer adminid) {
 		
-		return 0;
+		return adminMapper.deleteByPrimaryKey(adminid);
 	}
 
 	@Override
 	public int addAdmin(Admin record) {
 		
-		return 0;
+		return adminMapper.insert(record);
 	}
 
 	@Override
@@ -37,19 +37,19 @@ public class User_AdminServiceImpl implements User_AdminService {
 	@Override
 	public Admin findByAdminId(Integer adminid) {
 		// TODO Auto-generated method stub
-		return null;
+		return adminMapper.selectByPrimaryKey(adminid);
 	}
 
 	@Override
 	public int editAdmin(Admin record) {
 		// TODO Auto-generated method stub
-		return 0;
+		return adminMapper.updateByPrimaryKey(record);
 	}
 
 	@Override
 	public List<Admin> selectList(Admin record) {
 		// TODO Auto-generated method stub
-		return null;
+		return adminMapper.selectAdminList(record);
 	}
 
 	@Override

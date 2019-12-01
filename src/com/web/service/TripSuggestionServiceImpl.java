@@ -2,20 +2,27 @@ package com.web.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.web.dao.TripSuggestionMapper;
 import com.web.pojo.TripSuggestion;
-
+@Service("tripSuggestionService")
+@Transactional
 public class TripSuggestionServiceImpl implements TripSuggestionService {
-
+	@Autowired
+	TripSuggestionMapper tripSuggestionMapper;
 	@Override
 	public int deleteTripSuggestion(Integer tripsuggestid) {
 		
-		return 0;
+		return tripSuggestionMapper.deleteByPrimaryKey(tripsuggestid);
 	}
 
 	@Override
 	public int addTripSuggestion(TripSuggestion record) {
 		
-		return 0;
+		return tripSuggestionMapper.insert(record);
 	}
 
 	@Override
@@ -27,13 +34,13 @@ public class TripSuggestionServiceImpl implements TripSuggestionService {
 	@Override
 	public int editTripSuggestion(TripSuggestion record) {
 	
-		return 0;
+		return tripSuggestionMapper.updateByPrimaryKey(record);
 	}
 
 	@Override
 	public List<TripSuggestion> viewList(TripSuggestion record) {
 		
-		return null;
+		return tripSuggestionMapper.selectTripSuggestionList(record) ;
 	}
 
 }
